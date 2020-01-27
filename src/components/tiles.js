@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Tile from './tile'
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Skeleton from '@material-ui/lab/Skeleton';
 import {fetchProperties} from '../services/accounts'
 
 const Tiles = (props) => {
@@ -8,15 +8,14 @@ const Tiles = (props) => {
     const [propertiesError, setPropertiesError] = useState(null);
 
     useEffect(() => {
-        fetchProperties().then(
+        fetchProperties(true).then(
             p => {setProperties(p)},
             e => {setPropertiesError(e)}
         )
     }, [properties]);
 
     return (
-        <div id="container">
-            
+        <div className="flex-container">
                 {
                     propertiesError ?
                         <div>There is an error</div>
@@ -25,7 +24,14 @@ const Tiles = (props) => {
                     properties.map((o, index) => 
                         <Tile property={o} key={o.name} index={index+1}/>
                     )
-                    : <CircularProgress />
+                    : 
+                    Array.from(new Array(20)).map((o, index) => 
+                    <div className="flex-card" key={index}>
+                        <Skeleton variant="rect" width={210} height={118} />
+                        <Skeleton width="210px" />
+                        <Skeleton width="210px" />
+                    </div>
+                    )
                 }
         </div>
     );

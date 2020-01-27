@@ -62,8 +62,9 @@ $color: #efefef;
 
 .flex-card {
   width: $box-size;
-  height: $box-size;
+  height: $box-size-2;
   margin: 15px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

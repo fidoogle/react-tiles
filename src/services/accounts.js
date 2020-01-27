@@ -1,12 +1,30 @@
 import axios from 'axios';
 
-const MIN_FETCH_TIME = 500;
+const MIN_FETCH_TIME = 1500;
 function sleep(t = MIN_FETCH_TIME) {
     t = Math.random() * t + MIN_FETCH_TIME
     return new Promise(resolve => setTimeout(resolve, t))
 }
 
-const fetchProperties = async (delay=true) => {
+const fetchBalance = async (id=0, delay=false) => {
+    const url = '/data/properties.json';
+    try {
+        const response = await axios({
+            method: 'get',
+            url: url
+        });
+        if (delay) {
+            await sleep();
+        }
+        const result = response.data.find(o => o.id === id)
+        return result.balance; // if null, throw error in catch
+    } catch(e) {
+        console.error('Request for fetchBalance failed');
+        throw e;
+    }
+};
+
+const fetchProperties = async (delay=false) => {
     const url = '/data/properties.json';
     //const url = 'https://dev-api-assetmanagemnt-workerhost.azure.saws.org/account/api/gallons/3463463';
     try {
@@ -28,4 +46,6 @@ const fetchProperties = async (delay=true) => {
     }
 };
 
-export { fetchProperties }
+
+
+export { fetchBalance, fetchProperties }
