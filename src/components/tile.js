@@ -25,7 +25,7 @@ function Tile({property}) {
                     (balance ?
                         '$'+balance
                     : 
-                        <CircularProgress/>
+                        <CircularProgress size={30}/>
                     )
             }
         </div>
