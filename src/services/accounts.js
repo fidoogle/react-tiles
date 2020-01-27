@@ -5,6 +5,10 @@ function sleep(t = MIN_FETCH_TIME) {
     t = Math.random() * t + MIN_FETCH_TIME
     return new Promise(resolve => setTimeout(resolve, t))
 }
+function randomError() {
+    const rnd = Math.floor(Math.random() * 10); // integer between 0 and 9
+    return (rnd%5===0)
+}
 
 const fetchBalance = async (id=0, delay=false) => {
     const url = '/data/properties.json';
@@ -15,6 +19,9 @@ const fetchBalance = async (id=0, delay=false) => {
         });
         if (delay) {
             await sleep();
+        }
+        if (randomError()) {
+            throw 'Random error'
         }
         const result = response.data.find(o => o.id === id)
         return result.balance; // if null, throw error in catch
