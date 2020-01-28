@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { StoreContext } from '../stores/store'
+
 import Tile from './tile'
 import Skeleton from '@material-ui/lab/Skeleton';
 import {fetchProperties} from '../services/accounts'
 
 const Tiles = (props) => {
-    const [properties, setProperties] = useState(null);
+    const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext);
     const [propertiesError, setPropertiesError] = useState(null);
 
     useEffect(() => {
         fetchProperties(true).then(
-            p => {setProperties(p)},
+            p => {setDataProperties([...dataProperties, ...p])},
             e => {setPropertiesError(e)}
         )
-    }, [properties]);
+    }, [dataProperties]);
 
     return (
         <div className="flex-container">
@@ -20,8 +22,8 @@ const Tiles = (props) => {
                     propertiesError ?
                         <div>There is an error</div>
                     :
-                    properties ?
-                    properties.map((o, index) => 
+                    dataProperties.length ?
+                    dataProperties.map((o, index) => 
                         <Tile property={o} key={o.name} index={index+1}/>
                     )
                     : 

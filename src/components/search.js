@@ -1,15 +1,24 @@
-import React from 'react';
-import SortIcon from '@material-ui/icons/Sort';
-import orange from '@material-ui/core/colors/orange';
+import React, { useContext, useState } from 'react';
+import { StoreContext } from '../stores/store'
+
+import SortIcon from '@material-ui/icons/Sort'
+import orange from '@material-ui/core/colors/orange'
 
 
-const search = () => {
+const Search = () => {
+    const [amountAscending, setAmountAscending] = useState(false);
+    const [streetAscending, setStreetAscending] = useState(false);
+    const { ['appFunctions']: [appFuncs, setAppFuncs] } = useContext(StoreContext);
+
     const sortAmount = () => {
-        
+        appFuncs.sortAmount(amountAscending)
+        setAmountAscending(!amountAscending)
     }
     const sortStreet = () => {
-        
+        appFuncs.sortStreet(streetAscending)
+        setStreetAscending(!streetAscending)
     }
+
     return (
         <div className="search">
 
@@ -71,4 +80,4 @@ const search = () => {
     );
 };
 
-export default search;
+export default Search;

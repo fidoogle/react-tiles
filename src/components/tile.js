@@ -1,11 +1,12 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import React, { useContext, useLayoutEffect, useState } from 'react'
 import {fetchBalance} from '../services/accounts'
+//Material UI
+import CircularProgress from '@material-ui/core/CircularProgress'
 import CachedIcon from '@material-ui/icons/Cached';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import WarningIcon from '@material-ui/icons/Warning';
-
+//Material Colors
 import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
 import lightBlue from '@material-ui/core/colors/lightBlue';
