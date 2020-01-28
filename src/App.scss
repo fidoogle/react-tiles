@@ -8,19 +8,12 @@ $button-color: #555;
 $background: #3a3a4d;
 $color: #efefef;
 
-.App {
-  text-align: center;
-  /*visibility: hidden;*/
-}
-
-.App-header {
-  min-height: 100vh;
+body {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .circle {
@@ -53,11 +46,17 @@ $color: #efefef;
 }
 
 .flex-container {
+  max-width: 1220px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+
+  &::after {
+    content: "";
+    flex: auto;
+  }
 }
 
 .flex-card-loader {
