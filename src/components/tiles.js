@@ -26,7 +26,7 @@ const Tiles = (props) => {
                     )
                     : 
                     Array.from(new Array(20)).map((o, index) => 
-                    <div className="flex-card" key={index}>
+                    <div className="flex-card-loader" key={index}>
                         <Skeleton variant="rect" width={210} height={118} />
                         <Skeleton width="210px" />
                         <Skeleton width="210px" />
