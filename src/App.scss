@@ -14,6 +14,8 @@ body {
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .circle {
@@ -167,6 +169,124 @@ body {
   color: red;
   cursor: pointer;
 }
+
+/* Disappearing borders fix: https://stackoverflow.com/questions/49000385/css-border-disappears-when-child-element-has-a-background-color-and-browser-is-z/49000386 */
+.search {
+  position: relative;
+  width: 100%;
+  max-width: 1220px;
+  height: 94px;
+  background: pink;
+  /*border-top: 1px solid #6848B5;
+  border-bottom: 1px solid #6848B5;
+  border-left: 1px solid #6848B5;*/
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  /* fixes border */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    border-top: 1px solid #6848B5;
+    border-bottom: 1px solid #6848B5;
+    border-left: 1px solid #6848B5
+  }
+
+  .search-option {
+    flex: 1 1 auto;
+    position: relative;
+    /*border-right: 1px solid #6848B5;*/
+    box-sizing: border-box;
+
+    /* fixes border */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-right: 1px solid #6848B5;
+    }
+
+    &:last-of-type {
+      border-right: none;
+    }
+
+    .search-top {
+      height: 28px;
+      padding: 6px;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px;
+      color: #FFFFFF;
+      background: #828282;
+      box-sizing: border-box;
+    }
+
+    .search-bottom {
+      height: 64px;
+      padding: 10px 10px 10px 20px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 13px;
+      line-height: 15px;
+      /*text-transform: uppercase;*/
+      color: #DA690B;
+      background: #f3f0f9;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .search-row, .search-row div {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 13px;
+        line-height: 15px;
+        color: #222222;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+
+        .spacer {
+          width: 20px;
+        }
+
+        input[type=text] {
+          width: 76px;
+          padding: 4px;
+          margin-right: 10px;
+          box-sizing: border-box;
+        }
+
+        .sort {
+          cursor: pointer;
+        }
+      }
+    }
+
+  } /* .search-option */
+}
+
 
 
 
