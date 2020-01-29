@@ -8,8 +8,9 @@ function App() {
   
   return (
     <div className="App">
+      <p>SCP</p>
       <Search/>
-        <Tiles/>
+      <Tiles/>
     </div>
   );
 }

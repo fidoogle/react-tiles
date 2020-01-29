@@ -7,7 +7,8 @@ export const StoreContext = React.createContext(null)
 
 
 export default ({ children }) => {
-    //Initial data can be gathered from asynch request
+
+    //INITIAL DATA can be gathered from asynch request
     const accountNumbers = ['11111', '22222', '33333']
     const accountProperties = []
     const userProfile = {
@@ -23,10 +24,12 @@ export default ({ children }) => {
     // Global Functions
     const sortAmount = (ascending) => {
         if (ascending) {
-            
+            properties.sort((a, b) => a.balance - b.balance);
         } else {
-            
+            properties.sort((a, b) => b.balance - a.balance);
         }
+        
+        console.log('Fidel sortAmount', {ascending, properties})
     };
     const sortStreet = (ascending) => {
         if (ascending) {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useLayoutEffect, useState } from 'react';
 import { StoreContext } from '../stores/store'
 
 import Tile from './tile'
@@ -6,14 +6,18 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import {fetchProperties} from '../services/accounts'
 
 const Tiles = (props) => {
-    const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext);
+    const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext); //global
+    const [properties, setProperties] = useState([]); //local
     const [propertiesError, setPropertiesError] = useState(null);
 
-    useEffect(() => {
-        fetchProperties(true).then(
-            p => {setDataProperties([...dataProperties, ...p])},
-            e => {setPropertiesError(e)}
-        )
+    useLayoutEffect(() => {
+        if (!dataProperties.length) {
+            fetchProperties(true).then(
+                p => {setDataProperties(p)},
+                e => {setPropertiesError(e)}
+            )
+        }
+        setProperties(dataProperties)
     }, [dataProperties]);
 
     return (
@@ -22,9 +26,9 @@ const Tiles = (props) => {
                     propertiesError ?
                         <div>There is an error</div>
                     :
-                    dataProperties.length ?
-                    dataProperties.map((o, index) => 
-                        <Tile property={o} key={o.name} index={index+1}/>
+                    properties.length ?
+                    properties.map((o, index) => 
+                        <Tile property={o} key={o.id} index={index+1}/>
                     )
                     : 
                     Array.from(new Array(20)).map((o, index) => 

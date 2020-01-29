@@ -22,7 +22,7 @@ function Tile({property}) {
     useLayoutEffect(() => {
         setBalanceError(null)
         fetchBalance(property.id, true).then(
-            p => {setBalance(p)},
+            p => {setBalance(p)}, // TODO merge into global properties store
             e => {setBalanceError(e)}
         )
     }, [refreshThis]);

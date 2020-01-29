@@ -8,14 +8,20 @@ import orange from '@material-ui/core/colors/orange'
 const Search = () => {
     const [amountAscending, setAmountAscending] = useState(false);
     const [streetAscending, setStreetAscending] = useState(false);
-    const { ['appFunctions']: [appFuncs, setAppFuncs] } = useContext(StoreContext);
+    const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext);
 
-    const sortAmount = () => {
-        appFuncs.sortAmount(amountAscending)
+    const sortAmount = (e) => {
+        e.stopPropagation()
+        let temp = [...dataProperties] //clone, avoids mutating state directly
+        if (amountAscending) { // FIXME assume zero for null balance
+            temp.sort((a, b) => a.balance - b.balance);
+        } else {
+            temp.sort((a, b) => b.balance - a.balance);
+        }
+        setDataProperties(temp)
         setAmountAscending(!amountAscending)
     }
     const sortStreet = () => {
-        appFuncs.sortStreet(streetAscending)
         setStreetAscending(!streetAscending)
     }
 
@@ -24,14 +30,20 @@ const Search = () => {
 
             <div className="search-option">
                 <div className="search-top">
-                    Search by:
+                    Search by: 
                 </div>
                 <div className="search-bottom">
                     <div>Sort</div>
                     <div className="search-row">
-                        <div onClick={sortAmount} className="sort">Amount &nbsp;<SortIcon fontSize="small" style={{ color: orange[700] }}/></div>
+                        <div onClick={(e) => {
+                            sortAmount(e)
+                        }} className="search-row sort">
+                            Amount &nbsp;<SortIcon fontSize="small" style={{ color: orange[700] }}/>
+                        </div>
                         <div className="spacer">&nbsp;</div>
-                        <div onClick={sortStreet} className="sort">Street Name &nbsp;<SortIcon fontSize="small" style={{ color: orange[700] }}/></div>
+                        <div onClick={sortStreet} className="search-row sort">
+                            Street Name &nbsp;<SortIcon fontSize="small" style={{ color: orange[700] }}/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -41,9 +53,9 @@ const Search = () => {
                     &nbsp;
                 </div>
                 <div className="search-bottom">
-                    Type
+                    <div>Type</div>
                     <div className="search-row">
-                        <input type="checkbox"/>Checking
+                        <div className="search-row"><input type="checkbox"/>Checking</div>
                         <div className="spacer">&nbsp;</div>
                         <div className="search-row"><input type="checkbox"/>Credit Card</div>
                     </div>
@@ -55,7 +67,7 @@ const Search = () => {
                     &nbsp;
                 </div>
                 <div className="search-bottom">
-                    Amount
+                    <div>Amount</div>
                     <div className="search-row">
                         <input type="text" placeholder="$"/> to &nbsp; &nbsp;<input type="text" placeholder="$"/>
                     </div>
@@ -67,9 +79,9 @@ const Search = () => {
                     &nbsp;
                 </div>
                 <div className="search-bottom">
-                    Status
+                    <div>Status</div>
                     <div className="search-row">
-                        <input type="checkbox"/>Received
+                        <div className="search-row"><input type="checkbox"/>Received</div>
                         <div className="spacer">&nbsp;</div>
                         <div className="search-row"><input type="checkbox"/>Pending</div>
                     </div>
