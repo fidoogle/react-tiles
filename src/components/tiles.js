@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { StoreContext } from '../stores/store'
-import Shuffle from 'shufflejs'
-
+import FlipMove from 'react-flip-move';
 import Tile from './tile'
 import Skeleton from '@material-ui/lab/Skeleton';
 import {fetchProperties} from '../services/accounts'
@@ -10,30 +9,19 @@ const Tiles = (props) => {
     const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext); //global
     const [properties, setProperties] = useState([]); //local
     const [propertiesError, setPropertiesError] = useState(null);
-    let shuffleElement = useRef(null)
-    let shuffleSizer = useRef(null)
-    let shuffle = null
 
     useEffect(() => {
         if (!dataProperties.length) {
             fetchProperties(true).then(
-                p => {setDataProperties(p); shuffle = new Shuffle(shuffleElement, {
-                    itemSelector: '.shuffle-item',
-                    sizer: shuffleSizer,
-                }); shuffle.resetItems();},
+                p => {setDataProperties(p)},
                 e => {setPropertiesError(e)}
             )
         }
         setProperties(dataProperties)
-        // shuffle = new Shuffle(shuffleElement, {
-        //     itemSelector: '.shuffle-item',
-        //     sizer: shuffleSizer,
-        // });
-        // shuffle.resetItems();
     }, [dataProperties]);
 
     return (
-        <div className="shuffle-flex-container" ref={el => { shuffleElement = el }}>
+        <FlipMove className="flex-container">
                 {
                     propertiesError ?
                         <div>There is an error</div>
@@ -41,7 +29,7 @@ const Tiles = (props) => {
                     properties.length ?
                     properties.map((o) => 
                         <div key={o.id}>
-                            <Tile property={o}/>
+                            <Tile property={o} key={o.id}/>
                         </div>
                     )
                     : 
@@ -53,8 +41,7 @@ const Tiles = (props) => {
                     </div>
                     )
                 }
-                <div className="shuffle-flex-card" ref={el => { shuffleSizer = el }}></div>
-        </div>
+        </FlipMove>
     );
 };
 
