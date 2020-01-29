@@ -55,7 +55,7 @@ body {
   justify-content: center;
   align-items: flex-start;
 
-  &::after {
+  &::after { /*fixex last row of orphans*/
     content: "";
     flex: auto;
   }
@@ -160,6 +160,11 @@ body {
   }
 }
 
+.clip {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
 .retry {
   font-family: Roboto;
   font-style: normal;

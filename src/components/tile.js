@@ -1,5 +1,6 @@
 import React, { useContext, useLayoutEffect, useState } from 'react'
 import {fetchBalance} from '../services/accounts'
+import Doughnut from './doughnut'
 //Material UI
 import CircularProgress from '@material-ui/core/CircularProgress'
 import CachedIcon from '@material-ui/icons/Cached';
@@ -27,12 +28,36 @@ function Tile({property}) {
         )
     }, [refreshThis]);
 
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    const data = {
+        labels: [
+            'Water',
+            'Sewer',
+            'Fees'
+        ],
+        datasets: [{
+            data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+            backgroundColor: [
+            '#0e7bb3',
+            '#379932',
+            '#e68a47'
+            ],
+            hoverBackgroundColor: [
+            '#3d7ee6',
+            '#33e621',
+            '#efae0e'
+            ]
+        }]
+    };
+
     return (
         <div className="flex-card">
-                <div className="flex-card-column">
-                    <div className="account">Account #: 300104859-1938391-8238</div>
+                <div className="flex-card-column clip">
+                    <div className="account clip">Account #: 300104859-1938391-8238</div>
                     <div className="address">{property.address}</div>
-                    <div className="balance">
+                    <div className="balance clip">
                         {
                             balanceError ?
                                 <div className="retry" onClick={(e) => setRefreshThis(Math.random)}>
@@ -56,9 +81,11 @@ function Tile({property}) {
                         Confirmation #: 7577471
                     </div>
                 </div>
-                <div className="flex-card-column right">
+                <div className="flex-card-column right clip">
                     <div><MoreHorizIcon style={{ color: grey[400] }}/></div>
-                    <div className="chart">&nbsp;</div>
+                    <div className="chart">
+                        <Doughnut data={data}/>
+                    </div>
                     <div className="status">
                         Pending
                     </div>
