@@ -143,6 +143,32 @@ body {
   }
   .chart {
     flex: 1 1 auto;
+    position: relative;
+
+    .doughnut-middle {
+      position: absolute;
+      top: 50px;
+      width: 140px;
+      z-index: 10;
+      font-family: Quicksand;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 30px;
+      text-align: center;
+      color: #0078AE;
+
+      .bottom {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #5691C8;
+      }
+    }
   }
   .status {
     padding: 5px;

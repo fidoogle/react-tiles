@@ -84,6 +84,10 @@ function Tile({property}) {
                 <div className="flex-card-column right clip">
                     <div><MoreHorizIcon style={{ color: grey[400] }}/></div>
                     <div className="chart">
+                        <div className="doughnut-middle">
+                            ${10*randomScalingFactor()}
+                            <div className="bottom">Total</div>
+                        </div>
                         <Doughnut data={data}/>
                     </div>
                     <div className="status">
