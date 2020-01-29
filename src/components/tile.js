@@ -53,7 +53,7 @@ function Tile({property}) {
     };
 
     return (
-        <div className="flex-card">
+        <div className="flex-card shuffle-item">
                 <div className="flex-card-column clip">
                     <div className="account clip">Account #: 300104859-1938391-8238</div>
                     <div className="address">{property.address}</div>
@@ -94,7 +94,6 @@ function Tile({property}) {
                         Pending
                     </div>
                 </div>
-            
             
         </div>
     )
