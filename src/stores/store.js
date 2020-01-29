@@ -22,25 +22,11 @@ export default ({ children }) => {
     }
 
     // Global Functions
-    const sortAmount = (ascending) => {
-        if (ascending) {
-            properties.sort((a, b) => a.balance - b.balance);
-        } else {
-            properties.sort((a, b) => b.balance - a.balance);
-        }
-        
-        console.log('Fidel sortAmount', {ascending, properties})
-    };
-    const sortStreet = (ascending) => {
-        if (ascending) {
-            
-        } else {
-            
-        }
+    const exampleGlobalFunction = (ascending) => {
+        // 
     };
     const globalFunctions = {
-        sortAmount,
-        sortStreet
+        exampleGlobalFunction
     }
 
     const [app, setApp] = React.useState(appState)

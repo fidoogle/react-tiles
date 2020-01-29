@@ -21,7 +21,27 @@ const Search = () => {
         setDataProperties(temp)
         setAmountAscending(!amountAscending)
     }
-    const sortStreet = () => {
+    const sortStreet = (e) => {
+        e.stopPropagation()
+        let temp = [...dataProperties] //clone, avoids mutating state directly
+        if (streetAscending) { 
+            temp.sort((a, b) => { // TODO add try/catch for bad data
+                const streetA = a.address.toUpperCase().split(' ')[1]
+                const streetB = b.address.toUpperCase().split(' ')[1]
+                if (streetA > streetB) { return 1 }
+                else if (streetA < streetB) { return -1 }
+                return 0
+            });
+        } else {
+            temp.sort((a, b) => { // TODO add try/catch for bad data
+                const streetA = a.address.toUpperCase().split(' ')[1]
+                const streetB = b.address.toUpperCase().split(' ')[1]
+                if (streetA > streetB) { return -1 }
+                else if (streetA < streetB) { return 1 }
+                return 0
+            });
+        }
+        setDataProperties(temp)
         setStreetAscending(!streetAscending)
     }
 
@@ -35,13 +55,11 @@ const Search = () => {
                 <div className="search-bottom">
                     <div>Sort</div>
                     <div className="search-row">
-                        <div onClick={(e) => {
-                            sortAmount(e)
-                        }} className="search-row sort">
+                        <div onClick={(e) => {sortAmount(e)}} className="search-row sort">
                             Amount &nbsp;<SortIcon fontSize="small" style={{ color: orange[700] }}/>
                         </div>
                         <div className="spacer">&nbsp;</div>
-                        <div onClick={sortStreet} className="search-row sort">
+                        <div onClick={(e) => {sortStreet(e)}} className="search-row sort">
                             Street Name &nbsp;<SortIcon fontSize="small" style={{ color: orange[700] }}/>
                         </div>
                     </div>
