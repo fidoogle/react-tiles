@@ -13,10 +13,22 @@ const Search = () => {
     const sortAmount = (e) => {
         e.stopPropagation()
         let temp = [...dataProperties] //clone, avoids mutating state directly
-        if (amountAscending) { // FIXME assume zero for null balance
-            temp.sort((a, b) => a.balance - b.balance);
+        if (amountAscending) {
+            temp.sort((a, b) => {
+                try {
+                    return a.balance - b.balance
+                } catch(err) {
+                    return 0
+                }
+            });
         } else {
-            temp.sort((a, b) => b.balance - a.balance);
+            temp.sort((a, b) => {
+                try {
+                    return b.balance - a.balance
+                } catch(err) {
+                    return 0
+                }
+            });
         }
         setDataProperties(temp)
         setAmountAscending(!amountAscending)
@@ -25,20 +37,28 @@ const Search = () => {
         e.stopPropagation()
         let temp = [...dataProperties] //clone, avoids mutating state directly
         if (streetAscending) { 
-            temp.sort((a, b) => { // TODO add try/catch for bad data
-                const streetA = a.address.toUpperCase().split(' ')[1]
-                const streetB = b.address.toUpperCase().split(' ')[1]
-                if (streetA > streetB) { return 1 }
-                else if (streetA < streetB) { return -1 }
-                return 0
+            temp.sort((a, b) => {
+                try {
+                    const streetA = a.address.toUpperCase().split(' ')[1]
+                    const streetB = b.address.toUpperCase().split(' ')[1]
+                    if (streetA > streetB) { return 1 }
+                    else if (streetA < streetB) { return -1 }
+                    return 0
+                } catch(err) {
+                    return 0
+                }
             });
         } else {
-            temp.sort((a, b) => { // TODO add try/catch for bad data
-                const streetA = a.address.toUpperCase().split(' ')[1]
-                const streetB = b.address.toUpperCase().split(' ')[1]
-                if (streetA > streetB) { return -1 }
-                else if (streetA < streetB) { return 1 }
-                return 0
+            temp.sort((a, b) => {
+                try {
+                    const streetA = a.address.toUpperCase().split(' ')[1]
+                    const streetB = b.address.toUpperCase().split(' ')[1]
+                    if (streetA > streetB) { return -1 }
+                    else if (streetA < streetB) { return 1 }
+                    return 0
+                } catch(err) {
+                    return 0
+                }
             });
         }
         setDataProperties(temp)
