@@ -1,4 +1,5 @@
 import React from 'react';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const NavBar = () => {
     return (
@@ -12,7 +13,8 @@ const NavBar = () => {
                     <div>Payment</div>
                     <div className="last-link">Contact Us</div>
                     <div className="settings">
-                        Settings
+                        <SettingsIcon fontSize="large"/>
+                        <div>&nbsp;Settings</div>
                     </div>
                 </div>
             </div>
