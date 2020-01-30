@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const MIN_FETCH_TIME = 1500;
+const MIN_FETCH_TIME = 3500;
 function sleep(t = MIN_FETCH_TIME) {
     t = Math.random() * t + MIN_FETCH_TIME
     return new Promise(resolve => setTimeout(resolve, t))

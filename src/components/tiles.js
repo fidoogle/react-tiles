@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 
 import { StoreContext } from '../stores/store'
 import FlipMove from 'react-flip-move';
 import Tile from './tile'
-import Skeleton from '@material-ui/lab/Skeleton';
 import {fetchProperties} from '../services/accounts'
+import CardSkeleton from './card-skeleton';
 
 const Tiles = (props) => {
     const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext); //global
@@ -34,10 +34,8 @@ const Tiles = (props) => {
                     )
                     : 
                     Array.from(new Array(20)).map((o, index) => 
-                    <div className="flex-card-loader" key={index}>
-                        <Skeleton variant="rect" width={210} height={118} />
-                        <Skeleton width="210px" />
-                        <Skeleton width="210px" />
+                    <div className="flex-card" key={index}>
+                        <CardSkeleton key={index}/>
                     </div>
                     )
                 }
