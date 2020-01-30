@@ -1,17 +1,17 @@
 import React from 'react';
-import './App.scss';
 import Search from './components/search'
 import Tiles from './components/tiles'
+import Nav from './components/nav'
 
 
 function App() {
   
   return (
-    <div className="App">
-      <p>SCP</p>
+    <>
+      <Nav/>
       <Search/>
       <Tiles/>
-    </div>
+    </>
   );
 }
 
