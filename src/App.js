@@ -3,6 +3,7 @@ import Search from './components/search'
 import Tiles from './components/tiles'
 import Nav from './components/nav'
 import PageTitles from './components/page-titles'
+import Footer from './components/footer'
 
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
       <PageTitles/>
       <Search/>
       <Tiles/>
+      <Footer/>
     </>
   );
 }
