@@ -56,7 +56,7 @@ body {
   z-index: 200;
 }
 
-.flex-container {
+.flex-card-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -214,18 +214,20 @@ body {
 }
 
 /* Disappearing borders fix: https://stackoverflow.com/questions/49000385/css-border-disappears-when-child-element-has-a-background-color-and-browser-is-z/49000386 */
-.search {
-  /*position: relative;*/
-  width: 100%;
-  max-width: 1200px;
-  height: 94px;
+.search-border {
   border-top: 1px solid #6848B5;
   border-bottom: 1px solid #6848B5;
   border-left: 1px solid #6848B5;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.search {
+  /*position: relative;*/
+  height: 94px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
   /* fixes border */
