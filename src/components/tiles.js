@@ -6,19 +6,20 @@ import {fetchProperties} from '../services/accounts'
 import CardSkeleton from './card-skeleton';
 
 const Tiles = (props) => {
-    const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext); //global
+    const { ['propertyInfo']: [globalProperties, setGlobalProperties] } = useContext(StoreContext); //global
+    const { ['propertyInfoIntact']: [globalPropertiesIntact, setGlobalPropertiesIntact] } = useContext(StoreContext); //original global data
     const [properties, setProperties] = useState([]); //local
     const [propertiesError, setPropertiesError] = useState(null);
 
     useEffect(() => {
-        if (!dataProperties.length) {
+        if (!globalPropertiesIntact.length) {
             fetchProperties(true).then(
-                p => {setDataProperties(p)},
+                p => {setGlobalProperties(p); setGlobalPropertiesIntact(p)},
                 e => {setPropertiesError(e)}
             )
         }
-        setProperties(dataProperties)
-    }, [dataProperties]);
+        setProperties(globalProperties)
+    }, [globalProperties]);
 
     return (
         <div className="flex-css">

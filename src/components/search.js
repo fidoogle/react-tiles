@@ -9,12 +9,13 @@ const Search = () => {
     const [amountAscending, setAmountAscending] = useState(false);
     const [streetAscending, setStreetAscending] = useState(false);
     const [selectedType, setSelectedType] = useState('all');
-    const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext);
+    const { ['propertyInfo']: [globalProperties, setGlobalProperties] } = useContext(StoreContext);
+    const { ['propertyInfoIntact']: [globalPropertiesIntact, setGlobalPropertiesIntact] } = useContext(StoreContext); //original global data
 
     const filterByType = (e) => {
         setSelectedType(e.target.value)
-        let temp = [...dataProperties] //clone, avoids mutating state directly
-        setDataProperties(
+        let temp = [...globalPropertiesIntact] //clone, avoids mutating state directly, always start with original data
+        setGlobalProperties(
             temp.filter(o => {
                 if (e.target.value==='all') return true;
                 return (o.type===e.target.value);
@@ -23,7 +24,7 @@ const Search = () => {
     }
     const sortAmount = (e) => {
         e.stopPropagation()
-        let temp = [...dataProperties] //clone, avoids mutating state directly
+        let temp = [...globalPropertiesIntact] //clone, avoids mutating state directly, always start with original data
         if (amountAscending) {
             temp.sort((a, b) => {
                 try {
@@ -41,12 +42,12 @@ const Search = () => {
                 }
             });
         }
-        setDataProperties(temp)
+        setGlobalProperties(temp)
         setAmountAscending(!amountAscending)
     }
     const sortStreet = (e) => {
         e.stopPropagation()
-        let temp = [...dataProperties] //clone, avoids mutating state directly
+        let temp = [...globalPropertiesIntact] //clone, avoids mutating state directly, always start with original data
         if (streetAscending) { 
             temp.sort((a, b) => {
                 try {
@@ -72,7 +73,7 @@ const Search = () => {
                 }
             });
         }
-        setDataProperties(temp)
+        setGlobalProperties(temp)
         setStreetAscending(!streetAscending)
     }
 

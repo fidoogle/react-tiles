@@ -33,6 +33,7 @@ export default ({ children }) => {
     const [user, setUser] = React.useState(userProfile)
     const [accounts, setAccounts] = React.useState(accountNumbers)
     const [properties, setProperties] = React.useState(accountProperties)
+    const [propertiesIntact, setPropertiesIntact] = React.useState(accountProperties)
     const [appFunctions, setAppFunctions] = React.useState(globalFunctions)
 
     const store = {
@@ -40,6 +41,7 @@ export default ({ children }) => {
         userInfo: [user, setUser],
         accountInfo: [accounts, setAccounts],
         propertyInfo: [properties, setProperties],
+        propertyInfoIntact: [propertiesIntact, setPropertiesIntact],
         appFunctions: [appFunctions, setAppFunctions],
     }
 
