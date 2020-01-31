@@ -3,8 +3,10 @@ import {fetchBalance} from '../services/accounts'
 import Doughnut from './doughnut'
 //Material UI
 import CircularProgress from '@material-ui/core/CircularProgress'
+import CheckIcon from '@material-ui/icons/Check';
 import CachedIcon from '@material-ui/icons/Cached';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import WarningIcon from '@material-ui/icons/Warning';
 //Material Colors
@@ -52,6 +54,19 @@ function Tile({property}) {
         }]
     };
 
+    const getStatusClassNames = () => {
+        let result = 'status flex-css ';
+        try {
+            result += property.status.toLowerCase()
+        } catch(e) {}
+        return result;
+    }
+    const getStatusIcon = () => {
+        if (property.status==='Issue') return <PriorityHighIcon fontSize="small"/>
+        if (property.status==='Pending') return <CachedIcon fontSize="small"/>
+        return <CheckIcon fontSize="small"/>
+    }
+
     return (
         <div className="flex-card">
                 <div className="flex-card-column clip">
@@ -72,10 +87,10 @@ function Tile({property}) {
                                 )
                         }
                     </div>
-                    <div className="legend">
-                        <div><FiberManualRecordIcon fontSize="small" style={{ color: lightBlue[800] }}/> Water</div>
+                    <div className="legend" style={{height: 66}}>
+                        {/* <div><FiberManualRecordIcon fontSize="small" style={{ color: lightBlue[800] }}/> Water</div>
                         <div><FiberManualRecordIcon fontSize="small" style={{ color: green[600] }}/> Sewer</div>
-                        <div><FiberManualRecordIcon fontSize="small" style={{ color: orange[700] }}/> Fees</div>
+                        <div><FiberManualRecordIcon fontSize="small" style={{ color: orange[700] }}/> Fees</div> */}
                     </div>
                     <div className="confirmation">
                         Confirmation #: 7577471
@@ -85,13 +100,14 @@ function Tile({property}) {
                     <div><MoreHorizIcon style={{ color: grey[400] }}/></div>
                     <div className="chart">
                         <div className="doughnut-middle">
-                            ${10*randomScalingFactor()}
-                            <div className="bottom">Total</div>
+                            {10*randomScalingFactor()}
+                            <div className="bottom">Gallons Used<br/>This Month</div>
                         </div>
                         <Doughnut data={data}/>
                     </div>
-                    <div className="status flex-css">
-                        <div>Pending</div>
+                    <div className={getStatusClassNames()}>
+                        {getStatusIcon()}
+                        <div>{property.status}</div>
                     </div>
                 </div>
             

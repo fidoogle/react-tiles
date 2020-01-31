@@ -8,8 +8,19 @@ import orange from '@material-ui/core/colors/orange'
 const Search = () => {
     const [amountAscending, setAmountAscending] = useState(false);
     const [streetAscending, setStreetAscending] = useState(false);
+    const [selectedType, setSelectedType] = useState('all');
     const { ['propertyInfo']: [dataProperties, setDataProperties] } = useContext(StoreContext);
 
+    const filterByType = (e) => {
+        setSelectedType(e.target.value)
+        let temp = [...dataProperties] //clone, avoids mutating state directly
+        setDataProperties(
+            temp.filter(o => {
+                if (e.target.value==='all') return true;
+                return (o.type===e.target.value);
+            })
+        )
+    }
     const sortAmount = (e) => {
         e.stopPropagation()
         let temp = [...dataProperties] //clone, avoids mutating state directly
@@ -66,6 +77,7 @@ const Search = () => {
     }
 
     return (
+        <form>
         <div className="search">
             <div className="content-max search-border">
                 <div className="search-option">
@@ -93,9 +105,35 @@ const Search = () => {
                     <div className="search-bottom">
                         <div>Type</div>
                         <div className="search-row">
-                            <div className="search-row"><input type="checkbox"/>Checking</div>
+                        <div className="search-row">
+                                <input 
+                                    name="type" 
+                                    type="radio" 
+                                    value="checking"
+                                    checked={selectedType==='checking'}
+                                    onChange={filterByType}
+                                />Checking
+                            </div>
                             <div className="spacer">&nbsp;</div>
-                            <div className="search-row"><input type="checkbox"/>Credit Card</div>
+                            <div className="search-row">
+                                <input 
+                                    name="type" 
+                                    type="radio" 
+                                    value="creditcard"
+                                    checked={selectedType==='creditcard'}
+                                    onChange={filterByType}
+                                />Credit Card
+                            </div>
+                            <div className="spacer">&nbsp;</div>
+                            <div className="search-row">
+                                <input 
+                                    name="type" 
+                                    type="radio" 
+                                    value="all"
+                                    checked={selectedType==='all'}
+                                    onChange={filterByType}
+                                />All
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,6 +165,7 @@ const Search = () => {
                 </div>
             </div>
         </div>
+        </form>
     );
 };
 

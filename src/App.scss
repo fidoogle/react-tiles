@@ -147,7 +147,7 @@ body > div {
 
     .doughnut-middle {
       position: absolute;
-      top: 50px;
+      top: 40px;
       width: 140px;
       font-family: Quicksand;
       font-style: normal;
@@ -170,8 +170,8 @@ body > div {
     }
   }
   .status {
+    height: 24px;
     padding: 2px 5px 5px 5px;
-    background: #FF8522;
     border: 1px solid #FFFFFF;
     border-radius: 2px;
     font-family: Roboto;
@@ -181,6 +181,16 @@ body > div {
     line-height: 15px;
     text-transform: capitalize;
     color: #FFFFFF;
+
+    &.issue {
+      background: #ae0001;
+    }
+    &.pending {
+      background: #FF8522;
+    }
+    &.received {
+      background: #279A2C;
+    }
   }
 }
 
