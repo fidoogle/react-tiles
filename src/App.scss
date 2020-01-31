@@ -26,8 +26,8 @@ body {
 }
 
 .content-max {
-  max-width: 1220px;
   @include flex-css();
+  max-width: 1220px;
 
   flex: 0 1 1220px;
 }
@@ -65,6 +65,7 @@ body {
 
 /*************** Tiles (Cards) *************/
 .tiles {
+  @include flex-css();
   width: 100%;
   @include flex-css();
   background-color: pink;
@@ -88,6 +89,7 @@ body {
   border-radius: 4px;
 }
 .flex-card {
+  @include flex-css($justify: space-between, $align: flex-start);
   width: $box-size;
   height: $box-size-2;
   margin: 10px;
@@ -96,12 +98,10 @@ body {
   border: 1px solid #3250B3;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   border-radius: 4px;
-
-  @include flex-css($justify: space-between, $align: flex-start);
 }
 .flex-card-column {
-  height: 100%;
   @include flex-css($direction: column, $justify: space-between, $align: flex-start);
+  height: 100%;
 
   &.right {
     align-items: flex-end;
@@ -132,9 +132,9 @@ body {
     color: #0078AE;
   }
   .legend {
+    @include flex-css($direction: column, $justify: flex-start, $align: flex-start);
     width: 100%;
     margin: 10px 0 10px 50px;
-    @include flex-css($direction: column, $justify: flex-start, $align: flex-start);
   }
   .confirmation {
     font-family: Roboto;
@@ -214,10 +214,9 @@ body {
   margin-bottom: 30px;
 }
 .search {
-  /*position: relative;*/
-  height: 94px;
   @include flex-css();
-
+  height: 94px;
+  /*position: relative;*/
   /* fixes border */
   /*&::after {
     content: '';
@@ -265,6 +264,7 @@ body {
     }
 
     .search-bottom {
+      @include flex-css($direction: column, $justify: space-between, $align: flex-start);
       height: 64px;
       padding: 10px 10px 10px 20px;
       font-family: Roboto;
@@ -272,19 +272,17 @@ body {
       font-weight: bold;
       font-size: 13px;
       line-height: 15px;
-      /*text-transform: uppercase;*/
       color: #DA690B;
       background: #f3f0f9;
-      @include flex-css($direction: column, $justify: space-between, $align: flex-start);
 
       .search-row {
+        @include flex-css($justify: flex-start);
         font-family: Roboto;
         font-style: normal;
         font-weight: 300;
         font-size: 13px;
         line-height: 15px;
         color: #222222;
-        @include flex-css($justify: flex-start);
 
         .spacer {
           width: 20px;
@@ -308,8 +306,8 @@ body {
 
 /***************** Top Nav *********************/
 .nav-header {
-  height: 100px;
   @include flex-css();
+  height: 100px;
 
   .title {
     font-family: Nunito;
@@ -338,6 +336,7 @@ body {
   }
 }
 .nav-bar {
+  @include flex-css();
   height: 74px;
   background: linear-gradient(180deg, rgba(63, 0, 215, 0.6) 0%, #6848B5 100%);
   margin-bottom: 20px;
@@ -348,11 +347,9 @@ body {
   line-height: 30px;
   color: #FFFFFF;
 
-  @include flex-css();
-
   .nav-links {
-    flex: 0 1 1220px;
     @include flex-css();
+    flex: 0 1 1220px;
 
     div {
       margin-right: 30px;
@@ -405,6 +402,7 @@ body {
 }
 
 .footer {
+  @include flex-css($direction: column);
   height: 314px;
   background: #5C5C5C;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
@@ -415,8 +413,6 @@ body {
   line-height: 24px;
   color: rgba(255, 255, 255, 0.75);
   margin-top: 36px;
-
-  @include flex-css($direction: column);
 }
 
 
