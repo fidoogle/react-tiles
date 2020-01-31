@@ -24,7 +24,7 @@ const Search = () => {
     }
     const sortAmount = (e) => {
         e.stopPropagation()
-        let temp = [...globalPropertiesIntact] //clone, avoids mutating state directly, always start with original data
+        let temp = [...globalProperties] //clone, avoids mutating state directly
         if (amountAscending) {
             temp.sort((a, b) => {
                 try {
@@ -47,7 +47,7 @@ const Search = () => {
     }
     const sortStreet = (e) => {
         e.stopPropagation()
-        let temp = [...globalPropertiesIntact] //clone, avoids mutating state directly, always start with original data
+        let temp = [...globalProperties] //clone, avoids mutating state directly
         if (streetAscending) { 
             temp.sort((a, b) => {
                 try {
