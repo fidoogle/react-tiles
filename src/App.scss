@@ -67,12 +67,6 @@ body > div {
 
 
 /*************** Tiles (Cards) *************/
-.tiles {
-  @include flex-css();
-  width: 100%;
-  @include flex-css();
-  background-color: pink;
-}
 .flex-card-container {
   @include flex-css($align: flex-start, $wrap: wrap);
 

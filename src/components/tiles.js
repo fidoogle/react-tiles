@@ -21,25 +21,29 @@ const Tiles = (props) => {
     }, [dataProperties]);
 
     return (
-        <FlipMove className="flex-card-container">
-            {
-                propertiesError ?
-                    <div>There is an error</div>
-                :
-                properties.length ?
-                properties.map((o) => 
-                    <div key={o.id}>
-                        <Tile property={o} key={o.id}/>
-                    </div>
-                )
-                : 
-                Array.from(new Array(20)).map((o, index) => 
-                <div className="flex-card" key={index}>
-                    <CardSkeleton key={index}/>
-                </div>
-                )
-            }
-        </FlipMove>
+        <div className="flex-css">
+            <div className="content-max">
+                <FlipMove className="flex-card-container">
+                    {
+                        propertiesError ?
+                            <div>There is an error</div>
+                        :
+                        properties.length ?
+                        properties.map((o) => 
+                            <div key={o.id}>
+                                <Tile property={o} key={o.id}/>
+                            </div>
+                        )
+                        : 
+                        Array.from(new Array(20)).map((o, index) => 
+                        <div className="flex-card" key={index}>
+                            <CardSkeleton key={index}/>
+                        </div>
+                        )
+                    }
+                </FlipMove>
+            </div>
+        </div>
     );
 };
 
