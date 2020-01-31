@@ -90,7 +90,7 @@ function Tile({property}) {
                         </div>
                         <Doughnut data={data}/>
                     </div>
-                    <div className="status flex-center">
+                    <div className="status flex-css">
                         <div>Pending</div>
                     </div>
                 </div>

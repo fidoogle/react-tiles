@@ -6,7 +6,7 @@ const NavHeader = () => {
             <div className="content-max">
                 <div><img src="/logo-saws.png"/></div>
                 <div className="title">My Commercial Account</div>
-                <div className="need-help flex-center">Need Help?</div>
+                <div className="need-help flex-css">Need Help?</div>
             </div>
         </div>
     );
