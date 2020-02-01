@@ -3,6 +3,8 @@ import { StoreContext } from '../stores/store'
 
 import SortIcon from '@material-ui/icons/Sort'
 import orange from '@material-ui/core/colors/orange'
+import ListIcon from '@material-ui/icons/List';
+import AppsIcon from '@material-ui/icons/Apps';
 
 
 const Search = () => {
@@ -11,6 +13,7 @@ const Search = () => {
     const [selectedType, setSelectedType] = useState('all');
     const { ['propertyInfo']: [globalProperties, setGlobalProperties] } = useContext(StoreContext);
     const { ['propertyInfoIntact']: [globalPropertiesIntact, setGlobalPropertiesIntact] } = useContext(StoreContext); //original global data
+    const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
 
     const filterByType = (e) => {
         setSelectedType(e.target.value)
@@ -76,6 +79,10 @@ const Search = () => {
         setGlobalProperties(temp)
         setStreetAscending(!streetAscending)
     }
+    const viewAs = (e, view) => {
+        e.stopPropagation()
+        setDataApp({...dataApp, viewAs: view})
+    }
 
     return (
         <form>
@@ -83,7 +90,7 @@ const Search = () => {
             <div className="content-max search-border">
                 <div className="search-option">
                     <div className="search-top">
-                        Search by: 
+                        Search by: {dataApp.viewAs?'grid':'list'}
                     </div>
                     <div className="search-bottom">
                         <div>Sort</div>
@@ -153,7 +160,19 @@ const Search = () => {
 
                 <div className="search-option">
                     <div className="search-top">
-                        &nbsp;
+                        <div>&nbsp;</div>
+                        <div className="flex-css">
+                            <div className="flex-css pointer" 
+                                onClick={(e) => {viewAs(e, 'grid')}} 
+                                style={{ color: (dataApp.viewAs==='grid')? orange[700]:''}}>
+                                <AppsIcon /> Grid&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div className="flex-css pointer" 
+                                onClick={(e) => {viewAs(e, 'list')}} 
+                                style={{ color: (dataApp.viewAs==='list')? orange[700]:''}}>
+                                <ListIcon /> List
+                            </div>
+                        </div>
                     </div>
                     <div className="search-bottom">
                         <div>Status</div>

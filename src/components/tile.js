@@ -1,12 +1,10 @@
 import React, { useContext, useLayoutEffect, useState } from 'react'
 import {fetchBalance} from '../services/accounts'
 import Doughnut from './doughnut'
+import Status from './status'
 //Material UI
 import CircularProgress from '@material-ui/core/CircularProgress'
-import CheckIcon from '@material-ui/icons/Check';
 import CachedIcon from '@material-ui/icons/Cached';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import WarningIcon from '@material-ui/icons/Warning';
 //Material Colors
@@ -54,19 +52,6 @@ function Tile({property}) {
         }]
     };
 
-    const getStatusClassNames = () => {
-        let result = 'status flex-css ';
-        try {
-            result += property.status.toLowerCase()
-        } catch(e) {}
-        return result;
-    }
-    const getStatusIcon = () => {
-        if (property.status==='Issue') return <PriorityHighIcon fontSize="small"/>
-        if (property.status==='Pending') return <CachedIcon fontSize="small"/>
-        return <CheckIcon fontSize="small"/>
-    }
-
     return (
         <div className="flex-card">
                 <div className="flex-card-column clip">
@@ -105,10 +90,7 @@ function Tile({property}) {
                         </div>
                         <Doughnut data={data}/>
                     </div>
-                    <div className={getStatusClassNames()}>
-                        {getStatusIcon()}
-                        <div>{property.status}</div>
-                    </div>
+                    <Status status={property.status}/>
                 </div>
             
         </div>

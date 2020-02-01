@@ -18,7 +18,8 @@ export default ({ children }) => {
     const appState = {
         oneChart: null,
         oneOverlay: null,
-        selectedAccount: accountNumbers[0] //can be set to first accountNumber after they load
+        selectedAccount: accountNumbers[0], //can be set to first accountNumber after they load
+        viewAs: 'grid',
     }
 
     // Global Functions

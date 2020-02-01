@@ -169,35 +169,17 @@ body > div {
       }
     }
   }
-  .status {
-    height: 24px;
-    padding: 2px 5px 5px 5px;
-    border: 1px solid #FFFFFF;
-    border-radius: 2px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 15px;
-    text-transform: capitalize;
-    color: #FFFFFF;
+} /* flex-card-column*/
 
-    &.issue {
-      background: #ae0001;
-    }
-    &.pending {
-      background: #FF8522;
-    }
-    &.received {
-      background: #279A2C;
-    }
-  }
-}
+
 
 .clip {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+}
+.pointer {
+  cursor: pointer;
 }
 .flex-css {
   @include flex-css();
@@ -211,6 +193,30 @@ body > div {
   color: red;
   cursor: pointer;
 }
+.status {
+  height: 24px;
+  padding: 2px 5px 5px 5px;
+  border: 1px solid #FFFFFF;
+  border-radius: 2px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+
+  &.issue {
+    background: #ae0001;
+  }
+  &.pending {
+    background: #FF8522;
+  }
+  &.received {
+    background: #279A2C;
+  }
+}
+
 
 /* Disappearing borders didn't work: https://stackoverflow.com/questions/49000385/css-border-disappears-when-child-element-has-a-background-color-and-browser-is-z/49000386 */
 .search-border {
@@ -233,6 +239,7 @@ body > div {
     }
 
     .search-top {
+      @include flex-css($justify: space-between);
       height: 28px;
       padding: 6px;
       font-family: 'Roboto';
@@ -396,7 +403,31 @@ body > div {
   margin-top: 36px;
 }
 
+.tableview {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+.tableview td, .tableview th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tableview tr:nth-child(even){background-color: #f2f2f2;}
+
+.tableview tr:hover {background-color: #ddd;}
+
+.tableview th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #7a57cf;
+  color: white;
+}
+
+
+/************ Mobile View *************/
 @media screen and (max-width: 600px) {
   .flex-card {
     width: 98vw;
