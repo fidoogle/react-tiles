@@ -4,7 +4,9 @@ import FlipMove from 'react-flip-move';
 import Tile from './tile'
 import {fetchProperties} from '../services/accounts'
 import CardSkeleton from './card-skeleton';
-import GridItem from './grid-item'
+import GridView from './grid-view'
+import CircularProgress from '@material-ui/core/CircularProgress'
+
 
 const Tiles = (props) => {
     const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
@@ -24,6 +26,7 @@ const Tiles = (props) => {
     }, [globalProperties]);
 
     return (
+        <>
         <div className="flex-css">
             <div className="content-max">
                 {dataApp.viewAs==='tiles' &&
@@ -47,34 +50,20 @@ const Tiles = (props) => {
                         }
                     </FlipMove>
                 }
-                {dataApp.viewAs==='grid' && (
-                    propertiesError ?
-                        <div>There is an error</div>
-                    :
-                    properties.length ?
-                        (<table className="tableview">
-                            <thead><tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Balance</th>
-                                <th>Status</th>
-                                <th>Type</th>
-                            </tr></thead>
-                            <tbody>
-                            {properties.map((o, index) => 
-                                <GridItem property={o} key={o.id} index={index+1}/>
-                            )}
-                        </tbody></table>)
-                    :
-                    Array.from(new Array(20)).map((o, index) => 
-                        <table key={index}>
-                            <tr><td>Loading...</td></tr>
-                        </table>
-                        )
-                )}
             </div>
         </div>
+        {dataApp.viewAs==='grid' && (
+            propertiesError ?
+                <div>There is an error</div>
+            :
+            properties.length ?
+                <GridView properties={properties}/>
+            :
+                <div className="flex-css">
+                    <CircularProgress size={40}/>
+                </div>
+        )}
+        </>
     );
 };
 
