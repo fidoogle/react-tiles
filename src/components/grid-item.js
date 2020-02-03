@@ -2,7 +2,7 @@ import React from 'react';
 import Status from './status'
 import Type from './type'
 
-const ListItem = ({property, index}) => {
+const GridItem = ({property, index}) => {
     return (
         <tr>
             <td>{index}</td>
@@ -15,4 +15,4 @@ const ListItem = ({property, index}) => {
     );
 };
 
-export default ListItem;
+export default GridItem;

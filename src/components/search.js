@@ -90,7 +90,7 @@ const Search = () => {
             <div className="content-max search-border">
                 <div className="search-option">
                     <div className="search-top">
-                        Search by: {dataApp.viewAs?'grid':'list'}
+                        Search by:
                     </div>
                     <div className="search-bottom">
                         <div>Sort</div>
@@ -163,13 +163,13 @@ const Search = () => {
                         <div>&nbsp;</div>
                         <div className="flex-css">
                             <div className="flex-css pointer" 
-                                onClick={(e) => {viewAs(e, 'grid')}} 
-                                style={{ color: (dataApp.viewAs==='grid')? orange[700]:''}}>
+                                onClick={(e) => {viewAs(e, 'tiles')}} 
+                                style={{ color: (dataApp.viewAs==='tiles')? orange[700]:''}}>
                                 <AppsIcon /> Tile View&nbsp;&nbsp;&nbsp;
                             </div>
                             <div className="flex-css pointer" 
-                                onClick={(e) => {viewAs(e, 'list')}} 
-                                style={{ color: (dataApp.viewAs==='list')? orange[700]:''}}>
+                                onClick={(e) => {viewAs(e, 'grid')}} 
+                                style={{ color: (dataApp.viewAs==='grid')? orange[700]:''}}>
                                 <ListIcon /> Grid View
                             </div>
                         </div>

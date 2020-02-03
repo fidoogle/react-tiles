@@ -4,7 +4,7 @@ import FlipMove from 'react-flip-move';
 import Tile from './tile'
 import {fetchProperties} from '../services/accounts'
 import CardSkeleton from './card-skeleton';
-import ListItem from './list-item'
+import GridItem from './grid-item'
 
 const Tiles = (props) => {
     const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
@@ -26,7 +26,7 @@ const Tiles = (props) => {
     return (
         <div className="flex-css">
             <div className="content-max">
-                {dataApp.viewAs==='grid' &&
+                {dataApp.viewAs==='tiles' &&
                     <FlipMove className="flex-card-container">
                         {
                             propertiesError ?
@@ -47,7 +47,7 @@ const Tiles = (props) => {
                         }
                     </FlipMove>
                 }
-                {dataApp.viewAs==='list' && (
+                {dataApp.viewAs==='grid' && (
                     propertiesError ?
                         <div>There is an error</div>
                     :
@@ -63,7 +63,7 @@ const Tiles = (props) => {
                             </tr></thead>
                             <tbody>
                             {properties.map((o, index) => 
-                                <ListItem property={o} key={o.id} index={index+1}/>
+                                <GridItem property={o} key={o.id} index={index+1}/>
                             )}
                         </tbody></table>)
                     :
