@@ -5,6 +5,7 @@ import CardBalance from './card-balance'
 import CardUsage from './card-usage'
 import {fetchProperties} from '../services/accounts'
 import CardSkeleton from './card-skeleton';
+import GridSkeleton from './grid-skeleton';
 import GridView from './grid-view'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import ReactCardFlip from 'react-card-flip';
@@ -49,7 +50,7 @@ const Tiles = (props) => {
                             : 
                             Array.from(new Array(20)).map((o, index) => 
                             <React.Fragment key={index}>
-                                <CardSkeleton key={index}/>
+                                <CardSkeleton/>
                             </React.Fragment>
                             )
                         }
@@ -64,9 +65,11 @@ const Tiles = (props) => {
             properties.length ?
                 <GridView properties={properties}/>
             :
-                <div className="flex-css">
-                    <CircularProgress size={40}/>
-                </div>
+                Array.from(new Array(20)).map((o, index) => 
+                    <React.Fragment key={index}>
+                        <GridSkeleton/>
+                    </React.Fragment>
+                )
         )}
         </>
     );
