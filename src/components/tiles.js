@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 
 import { StoreContext } from '../stores/store'
 import FlipMove from 'react-flip-move';
 import Tile from './tile'
+import TileUsage from './tile-usage'
 import {fetchProperties} from '../services/accounts'
 import CardSkeleton from './card-skeleton';
 import GridView from './grid-view'
@@ -37,15 +38,15 @@ const Tiles = (props) => {
                             :
                             properties.length ?
                             properties.map((o) => 
-                                <div key={o.id}>
+                                <React.Fragment key={o.id}>
                                     <Tile property={o} key={o.id}/>
-                                </div>
+                                </React.Fragment>
                             )
                             : 
                             Array.from(new Array(20)).map((o, index) => 
-                            <div className="flex-card" key={index}>
+                            <React.Fragment key={index}>
                                 <CardSkeleton key={index}/>
-                            </div>
+                            </React.Fragment>
                             )
                         }
                     </FlipMove>

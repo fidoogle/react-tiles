@@ -86,7 +86,6 @@ body > div {
   border-radius: 4px;
 }
 .flex-card {
-  @include flex-css($justify: space-between, $align: flex-start);
   width: $box-size;
   height: $box-size-2;
   margin: 10px;
@@ -95,6 +94,50 @@ body > div {
   border: 1px solid #3250B3;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   border-radius: 4px;
+}
+
+.address {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 24px;
+  color: #1F2041;
+}
+.gallons {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 57px;
+  color: #279A2C;
+}
+.from-last-month {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 26px;
+  color: #1F2041;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+.trend-chart {
+  background-color: yellowgreen;
+  height: 60px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.usage-trend {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 26px;
+  color: #1F2041;
+}
+.flex-card-row {
+  @include flex-css($justify: space-between, $align: flex-start);
 }
 .flex-card-column {
   @include flex-css($direction: column, $justify: space-between, $align: flex-start);
@@ -111,14 +154,6 @@ body > div {
     font-size: 10px;
     line-height: 11px;
     color: #4F4F4F;
-  }
-  .address {
-    font-family: Quicksand;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 24px;
-    color: #1F2041;
   }
   .balance {
     font-family: Nunito;
@@ -169,6 +204,7 @@ body > div {
       }
     }
   }
+  
 } /* flex-card-column*/
 
 
