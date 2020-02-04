@@ -2,11 +2,15 @@ import React, { useContext, useLayoutEffect, useState } from 'react'
 import {fetchBalance} from '../services/accounts'
 import Doughnut from './doughnut'
 import Status from './status'
+
 //Material UI
 import CircularProgress from '@material-ui/core/CircularProgress'
 import CachedIcon from '@material-ui/icons/Cached';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import WarningIcon from '@material-ui/icons/Warning';
+import Tooltip from '@material-ui/core/Tooltip';
+import Skeleton from '@material-ui/lab/Skeleton';
+
 //Material Colors
 import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
@@ -61,14 +65,18 @@ function Tile({property}) {
                         {
                             balanceError ?
                                 <div className="retry" onClick={(e) => setRefreshThis(Math.random)}>
-                                    <WarningIcon fontSize="small" style={{ color: red[500] }}/>
-                                    <CachedIcon/> Retry
+                                <Tooltip title="Failed to load. Click to retry.">
+                                    <span>
+                                        <WarningIcon fontSize="small" style={{ color: red[500] }}/>
+                                        <CachedIcon/> Retry
+                                    </span>
+                                </Tooltip>
                                 </div>
                             :
                                 (balance ?
                                     '$'+balance+' Due'
                                 : 
-                                    <CircularProgress size={20}/>
+                                    <Skeleton variant="rect" width={200} height={44}/>
                                 )
                         }
                     </div>

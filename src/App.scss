@@ -411,7 +411,7 @@ body > div {
   flex: 1 1 auto;
   height: 37px;
   color: black;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-family: Nunito, Arial, Helvetica, sans-serif;
 
   &.header {
     background-color: #7a57cf;
@@ -428,7 +428,7 @@ body > div {
   &:hover {
     background-color: #ddd;
   }
-  > div {
+  &> div {
     @include flex-css($justify: flex-start);
     padding-left: 10px;
     border-bottom: 1px solid #ddd;
