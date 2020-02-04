@@ -19,7 +19,7 @@ import orange from '@material-ui/core/colors/orange';
 import red from '@material-ui/core/colors/red';
 
 
-function Tile({property}) {
+function CardBalance({property}) {
     const [balance, setBalance] = useState(null);
     const [balanceError, setBalanceError] = useState(null);
     const [refreshThis, setRefreshThis] = useState(null);
@@ -106,4 +106,4 @@ function Tile({property}) {
     )
 }
 
-export default Tile;
+export default CardBalance;

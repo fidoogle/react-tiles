@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { StoreContext } from '../stores/store'
 import FlipMove from 'react-flip-move';
-import Tile from './tile'
-import TileUsage from './tile-usage'
+import CardBalance from './card-balance'
+import CardUsage from './card-usage'
 import {fetchProperties} from '../services/accounts'
 import CardSkeleton from './card-skeleton';
 import GridView from './grid-view'
@@ -41,8 +41,8 @@ const Tiles = (props) => {
                             properties.map((o) => 
                                 <React.Fragment key={o.id}>
                                     <ReactCardFlip isFlipped={dataApp.isFlipped} flipDirection="horizontal">
-                                        <Tile property={o} key={o.id}/>
-                                        <TileUsage property={o} key={o.id}/>
+                                        <CardBalance property={o} key={o.id}/>
+                                        <CardUsage property={o} key={o.id}/>
                                     </ReactCardFlip>
                                 </React.Fragment>
                             )

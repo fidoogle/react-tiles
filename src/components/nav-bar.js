@@ -5,17 +5,17 @@ import { StoreContext } from '../stores/store'
 const NavBar = () => {
     const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
 
-    const flipCard = (e) => {
+    const flipCard = (e, setTo) => {
         e.stopPropagation()
-        setDataApp({...dataApp, isFlipped: !dataApp.isFlipped})
+        setDataApp({...dataApp, isFlipped: setTo})
     }
     
     return (
         <div className="nav-bar">
             <div className="content-max">
                 <div className="nav-links">
-                    <div>Overview</div>
-                    <div onClick={(e) => {flipCard(e)}}>Usage</div>
+                    <div onClick={(e) => {flipCard(e, false)}}>Overview</div>
+                    <div onClick={(e) => {flipCard(e, true)}}>Usage</div>
                     <div>History</div>
                     <div>Move In/Out</div>
                     <div>Payment</div>

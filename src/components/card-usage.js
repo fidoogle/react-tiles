@@ -5,7 +5,7 @@ import grey from '@material-ui/core/colors/grey';
 import Status from './status'
 
 
-const TileUsage = ({property}) => {
+const CardUsage = ({property}) => {
     return (
         <div className="flex-card">
             <div className="flex-card-row">
@@ -34,4 +34,4 @@ const TileUsage = ({property}) => {
     );
 };
 
-export default TileUsage;
+export default CardUsage;
