@@ -7,6 +7,7 @@ import {fetchProperties} from '../services/accounts'
 import CardSkeleton from './card-skeleton';
 import GridView from './grid-view'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import ReactCardFlip from 'react-card-flip';
 
 
 const Tiles = (props) => {
@@ -39,7 +40,10 @@ const Tiles = (props) => {
                             properties.length ?
                             properties.map((o) => 
                                 <React.Fragment key={o.id}>
-                                    <Tile property={o} key={o.id}/>
+                                    <ReactCardFlip isFlipped={dataApp.isFlipped} flipDirection="horizontal">
+                                        <Tile property={o} key={o.id}/>
+                                        <TileUsage property={o} key={o.id}/>
+                                    </ReactCardFlip>
                                 </React.Fragment>
                             )
                             : 

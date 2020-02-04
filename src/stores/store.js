@@ -16,6 +16,7 @@ export default ({ children }) => {
         email: 'pedrosmith@gmail.com'
     }
     const appState = {
+        isFlipped: false,
         oneChart: null,
         oneOverlay: null,
         selectedAccount: accountNumbers[0], //can be set to first accountNumber after they load
