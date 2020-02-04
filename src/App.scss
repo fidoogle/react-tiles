@@ -383,6 +383,9 @@ body > div {
         font-weight: bold;
       }
     }
+    div.active {
+      font-weight: bold;
+    }
 
     .last-link {
       flex: 1 1 auto;

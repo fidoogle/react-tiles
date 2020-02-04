@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { StoreContext } from '../stores/store'
 
 const NavBar = () => {
+    const [activeLink, setActiveLink] = useState('overview')
     const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
 
     const flipCard = (e, setTo) => {
@@ -14,8 +15,8 @@ const NavBar = () => {
         <div className="nav-bar">
             <div className="content-max">
                 <div className="nav-links">
-                    <div onClick={(e) => {flipCard(e, false)}}>Overview</div>
-                    <div onClick={(e) => {flipCard(e, true)}}>Usage</div>
+                    <div onClick={(e) => {flipCard(e, false); setActiveLink('overview')}} className={(activeLink==='overview')?'active':''}>Overview</div>
+                    <div onClick={(e) => {flipCard(e, true); setActiveLink('usage')}} className={(activeLink==='usage')?'active':''}>Usage</div>
                     <div>History</div>
                     <div>Move In/Out</div>
                     <div>Payment</div>
