@@ -16,6 +16,7 @@ const Search = () => {
     const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
 
     const filterByType = (e) => {
+        setDataApp({...dataApp, shuffle: true})
         setSelectedType(e.target.value)
         let temp = [...globalPropertiesIntact] //clone, avoids mutating state directly, always start with original data
         setGlobalProperties(
@@ -27,6 +28,7 @@ const Search = () => {
     }
     const sortAmount = (e) => {
         e.stopPropagation()
+        setDataApp({...dataApp, shuffle: true})
         let temp = [...globalProperties] //clone, avoids mutating state directly
         if (amountAscending) {
             temp.sort((a, b) => {
@@ -50,6 +52,7 @@ const Search = () => {
     }
     const sortStreet = (e) => {
         e.stopPropagation()
+        setDataApp({...dataApp, shuffle: true})
         let temp = [...globalProperties] //clone, avoids mutating state directly
         if (streetAscending) { 
             temp.sort((a, b) => {
@@ -81,7 +84,7 @@ const Search = () => {
     }
     const viewAs = (e, view) => {
         e.stopPropagation()
-        setDataApp({...dataApp, viewAs: view})
+        setDataApp({...dataApp, shuffle: false, viewAs: view})
     }
 
     return (
@@ -90,7 +93,7 @@ const Search = () => {
             <div className="content-max search-border">
                 <div className="search-option">
                     <div className="search-top">
-                        Search by:
+                        Search by: {JSON.stringify(dataApp.shuffle)}
                     </div>
                     <div className="search-bottom">
                         <div>Sort</div>

@@ -8,7 +8,7 @@ export const StoreContext = React.createContext(null)
 
 export default ({ children }) => {
 
-    //INITIAL DATA can be gathered from asynch request
+    //INITIAL DATA (can be gathered from asynch request)
     const accountNumbers = ['11111', '22222', '33333']
     const accountProperties = []
     const userProfile = {
@@ -16,12 +16,14 @@ export default ({ children }) => {
         email: 'pedrosmith@gmail.com'
     }
     const appState = {
-        isFlipped: false,
+        isFlipped: false, //flip card around
         oneChart: null,
         oneOverlay: null,
         selectedAccount: accountNumbers[0], //can be set to first accountNumber after they load
+        shuffle: false, //shuffle cards
         viewAs: 'tiles',
     }
+
 
     // Global Functions
     const exampleGlobalFunction = (ascending) => {
@@ -31,6 +33,7 @@ export default ({ children }) => {
         exampleGlobalFunction
     }
 
+
     const [app, setApp] = React.useState(appState)
     const [user, setUser] = React.useState(userProfile)
     const [accounts, setAccounts] = React.useState(accountNumbers)
@@ -38,6 +41,7 @@ export default ({ children }) => {
     const [propertiesIntact, setPropertiesIntact] = React.useState(accountProperties)
     const [appFunctions, setAppFunctions] = React.useState(globalFunctions)
 
+    
     const store = {
         appInfo: [app, setApp],
         userInfo: [user, setUser],
