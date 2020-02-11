@@ -16,6 +16,7 @@ export default ({ children }) => {
         email: 'pedrosmith@gmail.com'
     }
     const appState = {
+        activeLink: 'overview',
         isFlipped: false, //flip card around
         oneChart: null,
         oneOverlay: null,

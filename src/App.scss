@@ -523,6 +523,34 @@ body > div {
 .pay-card-content {
   opacity: 1;
 }
+.pay-buttons {
+  @include flex-css($justify: center, $align: center);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 20px;
+
+  .all {
+    width: 384px;
+    height: 66px;
+    background: #FF7200;
+    border-radius: 4px;
+    margin: 10px;
+  }
+
+  .multiple {
+    width: 384px;
+    height: 66px;
+    background: #521AD8;
+    box-shadow: 1px 1px 30px rgba(104, 72, 181, 0.84);
+    border-radius: 4px;
+    margin: 10px;
+  }
+}
 
 
 
