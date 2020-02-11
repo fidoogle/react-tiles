@@ -1,8 +1,5 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../stores/store'
-import Status from './status'
-import Type from './type'
-import FlipMove from 'react-flip-move'
 import GridBalance from './grid-balance'
 import GridUsage from './grid-usage'
 import ReactCardFlip from 'react-card-flip'
