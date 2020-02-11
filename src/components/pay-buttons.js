@@ -3,6 +3,17 @@ import { StoreContext } from '../stores/store'
 
 const PayButtons = () => {
     const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
+    const { ['propertyInfo']: [globalProperties, setGlobalProperties] } = useContext(StoreContext); //global
+
+    const selectAll = (e, setAll) => {
+        e.stopPropagation()
+        if (setAll) {
+            const selected = globalProperties.map( o => o.id)
+            setDataApp({...dataApp, payMultiple: selected})
+        } else {
+            setDataApp({...dataApp, payMultiple: []})
+        }
+    }
 
     return (
         <>
@@ -10,8 +21,14 @@ const PayButtons = () => {
                 dataApp.activeLink==='payment' && 
                 <div className="pay-buttons">
                     <div className="content-max">
-                        <div className="multiple">Select Accounts</div>
-                        <div className="all">Pay All Accounts</div>
+                        <div className="multiple" 
+                            onClick={(e) => {selectAll(e, false)}}>
+                            Select Accounts
+                        </div>
+                        <div className="all"
+                            onClick={(e) => {selectAll(e, true)}}>
+                            Pay All Accounts
+                        </div>
                     </div>
                 </div>
             }

@@ -45,7 +45,7 @@ const Tiles = (props) => {
                                         <CardBalance property={o} key={o.id}/>
                                         <CardUsage property={o} key={o.id}/>
                                     </ReactCardFlip>
-                                    <CardPay/>
+                                    <CardPay id={o.id}/>
                                 </div>
                             )
                             : 
