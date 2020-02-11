@@ -27,7 +27,7 @@ function randomData(n = 30) {
 }
 
 
-const SparklineChart = () => {
+const SparklineChart = ({width, height}) => {
     const [sampleData, setSampleData] = useState([]);
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const SparklineChart = () => {
     }, []);
 
     return (
-        <Sparklines data={sampleData} svgWidth={200} svgHeight={30}>
+        <Sparklines data={sampleData} svgWidth={width} svgHeight={height}>
             <SparklinesBars />
         </Sparklines>
     );

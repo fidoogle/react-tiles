@@ -10,7 +10,7 @@ const GridUsage = ({property, index}) => {
             <div className={`grid-row ${(index%2===0) ? "even" : ""}`}>
                     <div>{index}</div>
                     <div>{property.address}</div>
-                    <div><SparklineChart/></div>
+                    <div><SparklineChart width={200} height={30}/></div>
                     <div>-78</div>
                     <div><Status status={property.status}/></div>
                     <div><Type type={property.type}/></div>

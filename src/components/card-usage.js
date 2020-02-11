@@ -3,7 +3,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Skeleton from '@material-ui/lab/Skeleton';
 import grey from '@material-ui/core/colors/grey';
 import Status from './status'
-
+import SparklineChart from './sparkline-chart'
 
 const CardUsage = ({property}) => {
     return (
@@ -24,7 +24,9 @@ const CardUsage = ({property}) => {
                 </div>
             </div>
             <div className="flex-card-row">
-                <div className="trend-chart">Chart</div>
+                <div className="trend-chart">
+                    <SparklineChart width={350} height={60}/>
+                </div>
             </div>
             <div className="flex-card-row">
                 <div></div>
