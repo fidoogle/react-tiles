@@ -143,6 +143,11 @@ body > div {
   @include flex-css($direction: column, $justify: space-between, $align: flex-start);
   height: 100%;
 
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+
   &.right {
     align-items: flex-end;
   }
@@ -494,6 +499,32 @@ body > div {
     flex: 0 1 94px;
   }
 }
+
+
+/************ Payment View *************/
+.pay-card-parent {
+  position: relative;
+}
+.pay-card {
+  background-color: #269a2b;
+  opacity: .6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 49px;
+  text-align: center;
+  color: #FFFFFF;
+  z-index: 10;
+}
+.pay-card-content {
+  opacity: 1;
+}
+
+
 
 
 /************ Mobile View *************/

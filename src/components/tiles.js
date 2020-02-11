@@ -3,6 +3,7 @@ import { StoreContext } from '../stores/store'
 import CardBalance from './card-balance'
 import CardUsage from './card-usage'
 import {fetchProperties} from '../services/accounts'
+import CardPay from './card-pay';
 import CardSkeleton from './card-skeleton';
 import GridSkeleton from './grid-skeleton';
 import GridView from './grid-view'
@@ -39,12 +40,13 @@ const Tiles = (props) => {
                             :
                             properties.length ?
                             properties.map((o) => 
-                                <React.Fragment key={o.id}>
+                                <div key={o.id} className="pay-card-parent">
                                     <ReactCardFlip isFlipped={dataApp.isFlipped} flipDirection="horizontal">
                                         <CardBalance property={o} key={o.id}/>
                                         <CardUsage property={o} key={o.id}/>
                                     </ReactCardFlip>
-                                </React.Fragment>
+                                    <CardPay/>
+                                </div>
                             )
                             : 
                             Array.from(new Array(20)).map((o, index) => 
