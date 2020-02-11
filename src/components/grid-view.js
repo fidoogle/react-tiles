@@ -15,7 +15,7 @@ const GridView = ({properties}) => {
         <>
             <div className="flex-css">
                 <div className="content-max">
-                    <ReactCardFlip isFlipped={dataApp.isFlipped} flipDirection="vertical">
+                    <ReactCardFlip isFlipped={dataApp.isFlipped} flipDirection="vertical" containerStyle={{width: '100%'}}>
                         <div className="grid-row header">
                             <div></div>
                             <div>Name</div>
@@ -35,8 +35,7 @@ const GridView = ({properties}) => {
                     </ReactCardFlip>
                 </div>
             </div>
-            <FlipMove>
-            {!dataApp.shuffle && properties.length &&
+            {properties.length &&
                 properties.map((o, index) => 
                     <React.Fragment key={o.id}>
                         <ReactCardFlip isFlipped={dataApp.isFlipped} flipDirection="vertical">
@@ -46,37 +45,6 @@ const GridView = ({properties}) => {
                     </React.Fragment>
                 )
             }
-            {dataApp.shuffle && properties.length &&
-                properties.map((o, index) => 
-                    (dataApp.isFlipped) ?
-                        <div className="flex-css" key={o.id}>
-                            <div className="content-max">
-                            <div className={`grid-row ${(index%2===0) ? "even" : ""}`}>
-                                    <div>{index+1}</div>
-                                    <div>{o.name}</div>
-                                    <div>{o.address}</div>
-                                    <div>{o.balance}</div>
-                                    <div><Status status={o.status}/></div>
-                                    <div><Type type={o.type}/></div>
-                                </div>
-                            </div>
-                        </div>
-                    :
-                        <div className="flex-css" key={o.id}>
-                            <div className="content-max">
-                            <div className={`grid-row ${(index%2===0) ? "even" : ""}`}>
-                                    <div>{index+1}</div>
-                                    <div>{o.address}</div>
-                                    <div>usage chart goes here</div>
-                                    <div>-78</div>
-                                    <div><Status status={o.status}/></div>
-                                    <div><Type type={o.type}/></div>
-                                </div>
-                            </div>
-                        </div>
-                )
-            }
-            </FlipMove>
         </>
     );
 };

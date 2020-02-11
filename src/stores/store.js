@@ -20,7 +20,6 @@ export default ({ children }) => {
         oneChart: null,
         oneOverlay: null,
         selectedAccount: accountNumbers[0], //can be set to first accountNumber after they load
-        shuffle: false, //shuffle cards
         viewAs: 'tiles',
     }
 

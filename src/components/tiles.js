@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { StoreContext } from '../stores/store'
-import FlipMove from 'react-flip-move';
 import CardBalance from './card-balance'
 import CardUsage from './card-usage'
 import {fetchProperties} from '../services/accounts'
@@ -33,7 +32,7 @@ const Tiles = (props) => {
         <div className="flex-css">
             <div className="content-max">
                 {dataApp.viewAs==='tiles' &&
-                    <FlipMove className="flex-card-container">
+                    <div className="flex-card-container">
                         {
                             propertiesError ?
                                 <div>There is an error</div>
@@ -54,7 +53,7 @@ const Tiles = (props) => {
                             </React.Fragment>
                             )
                         }
-                    </FlipMove>
+                    </div>
                 }
             </div>
         </div>

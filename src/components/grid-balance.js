@@ -6,7 +6,7 @@ const GridBalance = ({property, index}) => {
     return (
         <div className="flex-css">
             <div className="content-max">
-            <div className={`grid-row ${(index%2===0) ? "even" : ""}`}>
+                <div className={`grid-row ${(index%2===0) ? "even" : ""}`}>
                     <div>{index}</div>
                     <div>{property.name}</div>
                     <div>{property.address}</div>

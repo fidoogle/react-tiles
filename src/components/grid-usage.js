@@ -1,7 +1,6 @@
 import React from 'react';
 import Status from './status'
 import Type from './type'
-import FlipMove from 'react-flip-move';
 
 
 const GridUsage = ({property, index}) => {

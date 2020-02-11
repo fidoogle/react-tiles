@@ -8,7 +8,7 @@ const NavBar = () => {
 
     const flipCard = (e, setTo) => {
         e.stopPropagation()
-        setDataApp({...dataApp, isFlipped: setTo, shuffle: false})
+        setDataApp({...dataApp, isFlipped: setTo})
     }
     
     return (
