@@ -165,12 +165,12 @@ const Search = () => {
                             <div className="flex-css pointer" 
                                 onClick={(e) => {viewAs(e, 'tiles')}} 
                                 style={{ color: (dataApp.viewAs==='tiles')? orange[700]:''}}>
-                                <AppsIcon /> Tile View&nbsp;&nbsp;&nbsp;
+                                <AppsIcon /> Grid View&nbsp;&nbsp;&nbsp;
                             </div>
                             <div className="flex-css pointer" 
                                 onClick={(e) => {viewAs(e, 'grid')}} 
                                 style={{ color: (dataApp.viewAs==='grid')? orange[700]:''}}>
-                                <ListIcon /> Grid View
+                                <ListIcon /> List View
                             </div>
                         </div>
                     </div>
