@@ -516,7 +516,6 @@ body > div {
   font-weight: 300;
   font-size: 36px;
   line-height: 49px;
-  text-align: center;
   color: #FFFFFF;
   z-index: 10;
   cursor: pointer;
@@ -525,17 +524,17 @@ body > div {
   opacity: 1;
 }
 .pay-buttons {
-  @include flex-css($justify: center, $align: center);
+  @include flex-css();
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
   font-size: 24px;
   line-height: 28px;
-  text-align: center;
   color: #FFFFFF;
   margin-top: 20px;
 
   .all {
+    @include flex-css();
     width: 384px;
     height: 66px;
     background: #FF7200;
@@ -545,6 +544,7 @@ body > div {
   }
 
   .multiple {
+    @include flex-css();
     width: 384px;
     height: 66px;
     background: #521AD8;

@@ -23,11 +23,11 @@ const PayButtons = () => {
                     <div className="content-max">
                         <div className="multiple" 
                             onClick={(e) => {selectAll(e, false)}}>
-                            Select Accounts
+                            <div>Select Accounts</div>
                         </div>
                         <div className="all"
                             onClick={(e) => {selectAll(e, true)}}>
-                            Pay All Accounts
+                            <div>Pay All Accounts</div>
                         </div>
                     </div>
                 </div>
