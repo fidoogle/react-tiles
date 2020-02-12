@@ -1,4 +1,5 @@
 import React, { useContext, useLayoutEffect, useState } from 'react'
+import { StoreContext } from '../stores/store'
 import {fetchBalance} from '../services/accounts'
 import Doughnut from './doughnut'
 import Status from './status'
@@ -23,6 +24,7 @@ function CardBalance({property}) {
     const [balance, setBalance] = useState(null);
     const [balanceError, setBalanceError] = useState(null);
     const [refreshThis, setRefreshThis] = useState(null);
+    const { ['appInfo']: [dataApp, setDataApp] } = useContext(StoreContext);
 
     useLayoutEffect(() => {
         setBalanceError(null)
@@ -31,6 +33,13 @@ function CardBalance({property}) {
             e => {setBalanceError(e)}
         )
     }, [refreshThis]);
+
+    const clickCard = (e) => {
+        e.stopPropagation()
+        if (dataApp.activeLink==='payment') {
+            setDataApp({...dataApp, payMultiple: [...dataApp.payMultiple, property.id]})
+        }
+    }
 
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
@@ -57,7 +66,7 @@ function CardBalance({property}) {
     };
 
     return (
-        <div className="flex-card">
+        <div className={`flex-card ${(dataApp.activeLink==='payment') ? "pointer" : ""}`} onClick={(e) => {clickCard(e)}}>
             <div className="flex-card-row">
                 <div className="flex-card-column clip">
                     <div className="account clip">Account #: 300104859-1938391-8238</div>

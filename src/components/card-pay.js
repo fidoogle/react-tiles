@@ -8,9 +8,7 @@ const CardPay = ({id}) => {
 
     const removeFromPay = (e) => {
         e.stopPropagation()
-        console.log('removeFromPay dataApp.payMultiple:',dataApp.payMultiple)
         const filtered = dataApp.payMultiple.filter(num => num!==id)
-        console.log('removeFromPay',{filtered, id})
         setDataApp({...dataApp, payMultiple: filtered})
     }
 
